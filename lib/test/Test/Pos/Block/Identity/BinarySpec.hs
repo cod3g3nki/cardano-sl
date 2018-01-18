@@ -11,15 +11,19 @@ import           Test.Hspec (Spec, describe)
 import           Pos.Arbitrary.Block ()
 import           Pos.Arbitrary.Block.Message ()
 import qualified Pos.Block.Network as BT
+import qualified Pos.Block.Types as BT
 import qualified Pos.Communication ()
 import qualified Pos.Core.Block as BT
 
-import           Test.Pos.Helpers (binaryTest)
 import           Test.Pos.Configuration (withDefConfiguration)
+import           Test.Pos.Helpers (binaryTest)
 
 spec :: Spec
 spec = withDefConfiguration $ describe "Block types" $ do
     describe "Bi instances" $ do
+        describe "Undo" $ do
+            binaryTest @BT.SlogUndo
+            binaryTest @BT.Undo
         describe "Block network types" $ do
             describe "MsgGetHeaders" $
                 binaryTest @BT.MsgGetHeaders

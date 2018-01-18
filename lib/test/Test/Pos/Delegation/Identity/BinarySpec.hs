@@ -12,14 +12,15 @@ import           Pos.Arbitrary.Delegation ()
 import           Pos.Arbitrary.Infra ()
 import           Pos.Communication.Types.Relay (DataMsg (..))
 import           Pos.Core (ProxySKHeavy)
-import           Pos.Delegation (DlgPayload)
+import           Pos.Delegation (DlgPayload, DlgUndo)
 
-import           Test.Pos.Helpers (binaryTest)
 import           Test.Pos.Configuration (withDefConfiguration)
+import           Test.Pos.Helpers (binaryTest)
 
 spec :: Spec
 spec = withDefConfiguration $ describe "Delegation types" $ do
     describe "Bi instances" $ do
         binaryTest @DlgPayload
+        binaryTest @DlgUndo
     describe "Network" $ do
         binaryTest @(DataMsg ProxySKHeavy)

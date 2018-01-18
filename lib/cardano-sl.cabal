@@ -317,6 +317,7 @@ test-suite cardano-test
                      , base
                      , bytestring
                      , canonical-json
+                     , cardano-crypto
                      , cardano-sl
                      , cardano-sl-binary
                      , cardano-sl-block
@@ -337,6 +338,7 @@ test-suite cardano-test
                      , cryptonite
                      , data-default
                      , extra
+                     , filelock
                      , fmt
                      , formatting
                      , generic-arbitrary

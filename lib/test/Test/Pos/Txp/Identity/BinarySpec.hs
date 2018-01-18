@@ -35,6 +35,7 @@ spec = withDefInfraConfiguration $ withDefConfiguration $
             binaryTest @T.TxAux
             binaryTest @T.TxProof
             binaryTest @(SmallGenerator T.TxPayload)
+            binaryTest @T.TxpUndo
         describe "Network" $ do
             binaryTest @(R.InvMsg (Tagged T.TxMsgContents T.TxId))
             binaryTest @(R.ReqMsg (Tagged T.TxMsgContents T.TxId))
