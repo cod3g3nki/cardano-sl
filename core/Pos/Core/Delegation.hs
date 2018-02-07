@@ -26,8 +26,8 @@ import           Serokell.Util (listJson, pairF)
 
 import           Pos.Binary.Class (Bi)
 import           Pos.Core.Slotting.Types (EpochIndex)
-import           Pos.Crypto (HasCryptoConfiguration, Hash, ProxySecretKey (..), ProxySignature,
-                             hash, validateProxySecretKey)
+import           Pos.Crypto (Hash, ProxySecretKey (..), ProxySignature, hash)
+import           Pos.Crypto.Configuration (HasCryptoConfiguration)
 
 ----------------------------------------------------------------------------
 -- Proxy signatures and signing keys
@@ -99,7 +99,7 @@ checkDlgPayload ::
        (HasCryptoConfiguration, MonadError Text m, Bi HeavyDlgIndex)
     => DlgPayload
     -> m ()
-checkDlgPayload (DlgPayload x) = forM_ x validateProxySecretKey
+checkDlgPayload (DlgPayload x) = forM_ x undefined
 
 -- | Proof of delegation payload.
 type DlgProof = Hash DlgPayload
