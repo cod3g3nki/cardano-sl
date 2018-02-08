@@ -77,6 +77,12 @@ let
       # Due to https://github.com/input-output-hk/stack2nix/issues/56
       hfsevents = self.callPackage ./pkgs/hfsevents.nix { inherit (pkgs.darwin.apple_sdk.frameworks) Cocoa CoreServices; };
 
+      # TODO: remove; current problem is in engine-io-wai needs base < 4.10
+      # Pending issues:
+      # * https://github.com/ocharles/engine.io/issues/37
+      # c.f. allow-newer: true in stack.yaml.
+      engine-io-wai = doJailbreak super.engine-io-wai;
+
       mkDerivation = args: super.mkDerivation (args // {
         enableLibraryProfiling = enableProfiling;
         enableExecutableProfiling = enableProfiling;
